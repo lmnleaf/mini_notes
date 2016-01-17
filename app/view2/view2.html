@@ -1,5 +1,15 @@
-<p>This is the partial for view 2.</p>
-<p>
-  Showing of 'interpolate' filter:
-  {{ 'Current version is v%VERSION%.' | interpolate }}
-</p>
+<div>
+
+<p>Note</p>
+<p ng-bind = 'noteTitle'>{{ note.Note.title }}</p>
+<p ng-bind = 'noteBody'></p>
+
+<form ng-submit = "updateNote(note, $index)">
+  <label>Title</label>
+  <input type = 'text' ng-model = 'noteTitle'/>
+  <label>Text</label>
+  <input type = 'text' ng-model = 'noteBody'/>
+  <input type = 'submit' value = 'Save'/>
+</form>
+
+</div>

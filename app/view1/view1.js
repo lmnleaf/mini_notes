@@ -15,54 +15,44 @@ angular.module('myApp.view1', ['ngRoute'])
 
 .controller('View1Ctrl', ['$scope', function(scope) {
 
-  var startingList = [
-    {
-      Note: {
-        title: "Note 1",
-        body: "Here is note 1."
-      },
-    },
-    {
-      Note: {
-        title: "Note 2",
-        body: "Here is note 2."
-      }
-    },
-    {
-      Note: {
-        title: "Note 3",
-        body: "Here is note 3."
-      }
-    }
-  ];
+  var startingList = [];
 
-// sets notesList in local storage
-  localStorage.setItem('notes', JSON.stringify(startingList)),
+  // sets starting notesList in local storage
+  if (localStorage.getItem('notes') == null) {
+    localStorage.setItem('notes', JSON.stringify(startingList));
+  }
 
-  scope.notesList = JSON.parse(localStorage.getItem('notes')),
+  // Gets notesList from local storage
+  scope.notesList = JSON.parse(localStorage.getItem('notes'));
 
-  console.log(JSON.parse(localStorage.getItem('notes'))),
-
-// adds a new note to the notesList in local storage
+  // adds a new note to the notesList in local storage
   scope.addNote = function (note) {
-    localStorage.setItem('note', scope.note);
+
     scope.notesList.push({
       Note: {
         title: scope.noteTitle,
         body: scope.noteBody
       }
     });
-    localStorage.setItem('notes', scope.notesList);
+
+    localStorage.setItem('notes', JSON.stringify(scope.notesList));
+
+    // Resets form fields to empty
     scope.noteTitle = '';
     scope.noteBody = '';
-  },
 
-// deletes a note from the notesList in local storage
+  };
+
+  // deletes note from the notesList in local storage
   scope.deleteNote = function (index) {
+
+    // removes note from notesList
     scope.notesList.splice(index);
     localStorage.removeItem(index);
-    localStorage.setItem('notes', scope.notesList);
-  }
 
+    // resets notesList in local storage
+    localStorage.setItem('notes', JSON.stringify(scope.notesList));
+
+  };
 
 }]);

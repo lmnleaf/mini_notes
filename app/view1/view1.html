@@ -5,14 +5,15 @@
 <table>
   <thead>
     <tr>
-      <th>Title</th><th>Text</th><th>Delete Note</th>
+      <th>Title</th><th>Text</th><th>Delete Note</th><th>Edit Note</th>
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="note in notesList">
+    <tr ng-repeat="note in notesList track by $index">
       <td>{{note.Note.title}}</td>
       <td>{{note.Note.body}}</td>
       <td><button ng-click = 'deleteNote($index)'>Remove</button></td>
+      <td><button><a ng-href="#/view2/{{$index}}">Edit</a></button></td>
     </tr>
   </tbody>
 </table>
