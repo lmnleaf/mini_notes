@@ -36,12 +36,14 @@ angular.module('myApp.view1', ['ngRoute'])
     }
   ];
 
+// sets notesList in local storage
   localStorage.setItem('notes', JSON.stringify(startingList)),
 
   scope.notesList = JSON.parse(localStorage.getItem('notes')),
 
   console.log(JSON.parse(localStorage.getItem('notes'))),
 
+// adds a new note to the notesList in local storage
   scope.addNote = function (note) {
     localStorage.setItem('note', scope.note);
     scope.notesList.push({
@@ -50,8 +52,17 @@ angular.module('myApp.view1', ['ngRoute'])
         body: scope.noteBody
       }
     });
-    localStorage.setItem('notes', scope.NotesList);
+    localStorage.setItem('notes', scope.notesList);
     scope.noteTitle = '';
     scope.noteBody = '';
+  },
+
+// deletes a note from the notesList in local storage
+  scope.deleteNote = function (index) {
+    scope.notesList.splice(index);
+    localStorage.removeItem(index);
+    localStorage.setItem('notes', scope.notesList);
   }
+
+
 }]);
