@@ -17,8 +17,12 @@
 </table>
 
 <form ng-submit = 'addNote(note)'>
-  <input type = 'text' ng-model = 'note'/>
-  <p ng-bind = 'note'></p>
+  <label>Title</label>
+  <input type = 'text' ng-model = 'noteTitle'/>
+  <p ng-bind = 'noteTitle'></p>
+  <label>Text</label>
+  <input type = 'text' ng-model = 'noteBody'/>
+  <p ng-bind = 'noteBody'></p>
   <input type = 'submit' value = 'Add Note'/>
 </form>
 

@@ -43,7 +43,15 @@ angular.module('myApp.view1', ['ngRoute'])
   console.log(JSON.parse(localStorage.getItem('notes'))),
 
   scope.addNote = function (note) {
-    console.log(scope.note);
     localStorage.setItem('note', scope.note);
+    scope.notesList.push({
+      Note: {
+        title: scope.noteTitle,
+        body: scope.noteBody
+      }
+    });
+    localStorage.setItem('notes', scope.NotesList);
+    scope.noteTitle = '';
+    scope.noteBody = '';
   }
 }]);
