@@ -1,1 +1,25 @@
-<p>This is the partial for view 1.</p>
+<div>
+
+<p>List of Notes</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th><th>Text</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="note in notesList">
+      <td>{{note.Note.title}}</td>
+      <td>{{note.Note.body}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<form ng-submit = 'addNote(note)'>
+  <input type = 'text' ng-model = 'note'/>
+  <p ng-bind = 'note'></p>
+  <input type = 'submit' value = 'Add Note'/>
+</form>
+
+</div>
