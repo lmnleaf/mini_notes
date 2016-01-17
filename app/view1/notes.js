@@ -1,19 +1,19 @@
 'use strict';
 
 // gives access to a module ngRoute that we're using in our own module
-// creates a new module for view1
-angular.module('myApp.view1', ['ngRoute'])
+// creates a new module for notes
+angular.module('myApp.notes', ['ngRoute'])
 
 // .config allows declaring a controller without using ng-controller in the view
 // $routeProvider is a module - declare view template used when pointing to a particular path
 .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/view1', {
-    templateUrl: 'view1/view1.html',
-    controller: 'View1Ctrl'
+  $routeProvider.when('/notes', {
+    templateUrl: 'notes/notes.html',
+    controller: 'notesCtrl'
   });
 }])
 
-.controller('View1Ctrl', ['$scope', function(scope) {
+.controller('notesCtrl', ['$scope', function(scope) {
 
   var startingList = [];
 

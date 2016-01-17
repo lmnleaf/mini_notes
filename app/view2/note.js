@@ -1,15 +1,15 @@
 'use strict';
 
-angular.module('myApp.view2', ['ngRoute'])
+angular.module('myApp.note', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/view2/:noteId', {
-    templateUrl: 'view2/view2.html',
-    controller: 'View2Ctrl'
+  $routeProvider.when('/note/:noteId', {
+    templateUrl: 'note/note.html',
+    controller: 'noteCtrl'
   });
 }])
 
-.controller('View2Ctrl', ['$scope', '$routeParams', '$location', function(scope, routeParams, location) {
+.controller('noteCtrl', ['$scope', '$routeParams', '$location', function(scope, routeParams, location) {
 
   // Set noteId based on parameter passed in through the url
   scope.noteId = routeParams.noteId;
@@ -36,7 +36,7 @@ angular.module('myApp.view2', ['ngRoute'])
     localStorage.setItem('notes', JSON.stringify(scope.notesList));
 
     // Redirect to notes index
-    location.path('/view1');
+    location.path('/notes');
 
   };
 }]);
