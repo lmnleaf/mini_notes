@@ -1,31 +1,54 @@
-<div>
+<div class="ui grid">
 
-<p>List of Notes</p>
+  <div class = "eight column row">
+    <div class = "four wide column"></div>
+    <div class = "four wide column">
+      <h2>Notes</h2>
+    </div>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th><th>Text</th><th>Delete Note</th><th>Edit Note</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr ng-repeat="note in notesList track by $index">
-      <td>{{note.Note.title}}</td>
-      <td>{{note.Note.body}}</td>
-      <td><button ng-click = 'deleteNote($index)'>Remove</button></td>
-      <td><button><a ng-href="#/note/{{$index}}">Edit</a></button></td>
-    </tr>
-  </tbody>
-</table>
+  <div class = "eight column row">
+    <div class = "four wide column"></div>
+      <div class = "seven wide column">
+      <table class = "ui very basic collapsing celled table">
+        <thead>
+          <tr>
+            <th>Title</th><th>Text</th><th>Delete Note</th><th>Edit Note</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="note in notesList track by $index">
+            <td>{{note.Note.title}}</td>
+            <td>{{note.Note.body}}</td>
+            <td><button ng-click = 'deleteNote($index)'>Remove</button></td>
+            <td><button class='ui secondary button'><a ng-href="#/note/{{$index}}">Edit</a></button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-<form ng-submit = 'addNote(note)'>
-  <label>Title</label>
-  <input type = 'text' ng-model = 'noteTitle'/>
-  <p ng-bind = 'noteTitle'></p>
-  <label>Text</label>
-  <input type = 'text' ng-model = 'noteBody'/>
-  <p ng-bind = 'noteBody'></p>
-  <input type = 'submit' value = 'Add Note'/>
-</form>
+  <div class = "eight column row">
+    <div class = "four wide column"></div>
+      <div class = "three wide column">
+      <form ng-submit = 'addNote(note)'>
+        <p>
+          <label>Title</label>
+          <input type = 'text' ng-model = 'noteTitle'/>
+        </p>
+        <p>
+          <label>Text</label>
+          <input type = 'text' ng-model = 'noteBody'/>
+        </p>
+        <p>
+          <input type = 'submit' value = 'Add Note'/>
+        </p>
+      </form>
+    </div>
+    <div class = "two wide column">
+      <p ng-bind = 'noteTitle'></p>
+      <p ng-bind = 'noteBody'></p>
+    </div>
+  </div>
 
 </div>
